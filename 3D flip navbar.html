@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Flip Navbar</title>
+
+<style>
+    body{
+    background: #ddd;
+    font-size: 100%;
+    padding: 3em;
+    font-family: sans-serif;
+}
+.mainNav{
+    float: left;
+    transform: perspective(500px);
+    transform-style: preserve-3d;
+}
+.mainNav ul{
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+.mainNav ul:after{
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1.5px 3px 3px rgba(0, 0, 0, 0.1);
+    content: '';
+    position: absolute;
+    height: 6px;
+    left: 12px;
+    right: 12px;
+    position: absolute;
+    top: 100%;
+    z-index: -1;
+}
+.mainNav a{
+    background: #f79533;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05)),
+                      linear-gradient(-197.5deg, rgba(255, 255, 255, 0.025) 50%, transparent 50%);
+    width: 96px;
+    display: block;
+    color: #333;
+    backface-visibility: hidden;
+    font: bold 16px/48px sans-serif;
+    padding: 0 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform-style: preserve-3d;
+    transform-origin: 50% 0;
+    transition: 0.5s;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25),
+                inset 0 0 24px rgba(0, 0, 0, 0.25);
+}
+.mainNav a::after{
+    content: attr(data-title);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    line-height: 48px;
+    width: 100%;
+    color: #fff;
+    background: inherit;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05)),
+                       linear-gradient(-197.5deg, rgba(255, 255, 255, 0.025) 50%, transparent 50%),
+                       linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
+    transform: rotateY(90deg);
+    transform-origin: 0 0;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2),
+                inset 0 0 24px rgba(0, 0, 0, 0.3);
+}
+.mainNav a::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 144px;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    transform-origin:0 0 ;
+    background: inherit;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.07), rgba(0, 0, 0, 0.07)),
+                      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+.mainNav li:nth-child(-n+2) a::before{
+    transform: rotateX(-90deg) translateX(-144px) translateZ(48px);
+}
+
+.mainNav li:nth-child(n+3) a::before{
+    transform: rotateX(-90deg) translateX(-144px);
+}
+.mainNav li:hover a{
+    transform: rotateY(-90deg) translateX(-72px) translateZ(72px);
+    z-index: 100;
+}
+</style>
+
+</head>
+<body>
+
+
+<!-- REMOVE -->
+  <h1>“Your one subscribe motivates me 1000%.”</h1>
+  <a href="https://www.youtube.com/@Free-Code-Zone" 
+     target="_blank" 
+     style="display:inline-block; padding:12px 25px; background:red; color:white; 
+            text-decoration:none; border-radius:6px; font-size:18px; font-family:sans-serif;">
+    Subscribe Now
+  </a>
+  <!-- REMOVE -->
+
+
+
+    <nav class="mainNav">
+        <ul>
+            <li>
+                <a href="#" data-title="Home">Home</a>
+            </li>
+
+            <li>
+                <a href="#" data-title="About">About</a>
+            </li>
+
+            <li>
+                <a href="#" data-title="Clients">Clients</a>
+            </li>
+
+            <li>
+                <a href="#" data-title="Work">Work</a>
+            </li>
+
+            <li>
+                <a href="#" data-title="Contact Us">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
